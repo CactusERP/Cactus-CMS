@@ -1,0 +1,61 @@
+﻿#MainMenu {
+	position:relative;
+	top:0px;
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+
+
+#MainMenu li{
+	float:left;
+	padding:0px;
+	}
+
+#MainMenu li a{
+	background:#cfcfcf;
+	display:block;
+	text-align:center;
+	text-decoration:none;
+	color:gray;
+	line-height:45px;
+	padding:0px 25px;
+	
+}
+
+#MainMenu li a:hover{
+	text-decoration:none;
+	background: #006699;
+	color:#FFFFFF;
+}
+
+/* Navigation Second Level */
+
+#MainMenu li ul{
+	position:absolute;
+	background:#222;
+	display:none;
+	height:auto;
+	width:210px;
+}
+
+#MainMenu li:hover ul{
+	display:block;
+}
+
+#MainMenu li li:hover {
+	font-weight: 800;
+}
+
+#MainMenu li li {
+	display:block;
+	float:none;
+	width:210px;
+}
+
+#MainMenu li ul a{
+	text-align:left;
+	display:block;
+	height:40px;
+	padding:0px 10px 0px 25px;
+}

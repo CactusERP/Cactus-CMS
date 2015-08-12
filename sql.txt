@@ -1,0 +1,115 @@
+-- phpMyAdmin SQL Dump
+-- version 3.1.3.1
+-- http://www.phpmyadmin.net
+--
+-- Σύστημα: localhost
+-- Χρόνος δημιουργίας: 15 Απρ 2013, στις 03:17 AM
+-- Έκδοση Διακομιστή: 5.1.33
+-- Έκδοση PHP: 5.2.9
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Βάση: `ieee`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Δομή Πίνακα για τον Πίνακα `categories`
+--
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(10) DEFAULT NULL,
+  `lft` int(10) DEFAULT NULL,
+  `rght` int(10) DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET latin1 DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+--
+-- 'Αδειασμα δεδομένων του πίνακα `categories`
+--
+
+INSERT INTO `categories` (`id`, `parent_id`, `lft`, `rght`, `name`) VALUES
+(1, NULL, 1, 2, 'IEEE'),
+(2, 0, 9, 14, 'Members'),
+(3, 0, 3, 4, 'Events'),
+(4, 0, 5, 6, 'News'),
+(5, 0, 7, 8, 'Meetings'),
+(6, 2, 10, 11, 'Commitee'),
+(7, 2, 12, 13, 'Students');
+
+-- --------------------------------------------------------
+
+--
+-- Δομή Πίνακα για τον Πίνακα `members`
+--
+
+CREATE TABLE IF NOT EXISTS `members` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `First_Name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `Last_Name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `Email` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Phone` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `Chair` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+
+--
+-- 'Αδειασμα δεδομένων του πίνακα `members`
+--
+
+INSERT INTO `members` (`ID`, `First_Name`, `Last_Name`, `Email`, `Phone`, `Chair`) VALUES
+(1, 'Anestis', 'Stamatis', 'astam@it.teithe.gr', '6978556246', 'Publicity Chair'),
+(2, 'Dimitris', 'Amoutzidis', 'damou@it.teithe.gr', '6984385968', 'Program Chair'),
+(5, 'Achilleas', 'Gavrillidis', 'grav@it.teithe.gr', '4958673945', 'Chiff'),
+(6, 'Dimitris', 'Veraros', 'vera@it.teithe.gr', '9874958735', 'Vice Chair');
+
+-- --------------------------------------------------------
+
+--
+-- Δομή Πίνακα για τον Πίνακα `menus`
+--
+
+CREATE TABLE IF NOT EXISTS `menus` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `controller` varchar(255) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 'Αδειασμα δεδομένων του πίνακα `menus`
+--
+
+INSERT INTO `menus` (`id`, `name`, `controller`, `action`, `created`, `modified`) VALUES
+(1, 'Home', 'IEEE', 'index', '2013-04-12 20:42:36', '2013-04-12 20:42:39');
+
+-- --------------------------------------------------------
+
+--
+-- Δομή Πίνακα για τον Πίνακα `posts`
+--
+
+CREATE TABLE IF NOT EXISTS `posts` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `created` date NOT NULL,
+  `modified` date NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+
+--
+-- 'Αδειασμα δεδομένων του πίνακα `posts`
+--
+
+INSERT INTO `posts` (`ID`, `image`, `title`, `body`, `created`, `modified`) VALUES
+(1, 'MyFirstEvent.png', 'IEEE Event first', 'This is our first event.', '2013-04-12', '2013-04-12'),
+(2, 'second.png', 'Our Second Events', 'a statement, picture in words, or account that describes; descriptive representation. 2. the act or method of describing. 3. sort; kind; variety: dogs of every a statement, picture in words, or account that describes; descriptive representation. 2. the act or method of describing. 3. sort; kind; variety: dogs of every', '2013-04-11', '2013-04-15');
